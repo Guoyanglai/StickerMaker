@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<canvas id='canvas' width="200px" height="200px" style="border: 1px solid black"></canvas>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		var cxt = canvas.getContext('2d');
+		var aaa = location.search.substr(1).split('/');
+		var bbb = decodeURI(aaa);
+		//var bbb = aaa[0].split('&');
+		//alert(bbb[0]);
+		cxt.beginPath();
+		drawLine(cxt, 20, 30, 20, 80);
+		drawLine(cxt, 20, 80, 10, 90);
+		drawLine(cxt, 10, 90, 20, 100);
+		drawLine(cxt, 20, 100, 20, 160);
+		drawCircle(cxt, 30, 160, 10, Math.PI, Math.PI * 0.5, true);
+		drawLine(cxt, 30, 170, 160, 170);
+		drawCircle(cxt, 160, 160, 10, Math.PI * 0.5, 0, true);
+		drawLine(cxt, 170, 160, 170, 30);
+		drawCircle(cxt, 160, 30, 10, 0, Math.PI * 1.5, true);
+		drawLine(cxt, 160, 20, 30, 20);
+		drawCircle(cxt, 30, 30, 10, Math.PI * 1.5, Math.PI, true);
+		cxt.closePath();
+
+		//var text = '是不是該買了';
+		cxt.font = '30px 楷體';
+		cxt.fillText(bbb, 35, 80, 120);
+
+		function drawLine(ct, x, y, x1, y1) {
+			ct.moveTo(x, y);
+			ct.lineTo(x1, y1);
+			ct.stroke();
+		}
+		function drawCircle(ct, cx, cy, r, sa, ea, isclock) {
+			//ct.beginPath();
+			ct.arc(cx, cy, r, sa, ea, isclock)
+			//ct.closePath();
+			ct.stroke();
+		}
+	</script>
+</body>
+</html>
